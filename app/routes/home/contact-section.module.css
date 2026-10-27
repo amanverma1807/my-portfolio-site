@@ -1,0 +1,422 @@
+.contactSection {
+  position: relative;
+  width: 100%;
+  padding: var(--space3XL) 0;
+  margin-top: var(--space2XL);
+  background: #08080a;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+
+  @media (--mediaMobile) {
+    padding: var(--space2XL) 0;
+    margin-top: var(--spaceXL);
+  }
+}
+
+.ambientGlow {
+  position: absolute;
+  top: -15%;
+  right: -5%;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.035) 0%,
+    rgba(255, 255, 255, 0.008) 50%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+
+  @media (--mediaTablet) {
+    width: 380px;
+    height: 380px;
+    top: -5%;
+    right: -10%;
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--maxWidthL);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--spaceOuter);
+
+  @media (--mediaMobile) {
+    padding: 0 var(--spaceOuter);
+  }
+}
+
+/* 1A. Large Top Heading */
+.heroHeadingWrapper {
+  width: 100%;
+  margin-bottom: var(--space2XL);
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition: opacity var(--durationL) ease, transform var(--durationL) var(--bezierFastoutSlowin);
+
+  &[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (--mediaTablet) {
+    margin-bottom: var(--spaceXL);
+  }
+
+  @media (--mediaMobile) {
+    margin-bottom: var(--spaceL);
+  }
+}
+
+.heroHeading {
+  font-family: var(--fontStack);
+  font-size: clamp(2.8rem, 9vw, 8rem);
+  font-weight: var(--fontWeightBold);
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  color: rgb(245, 245, 247);
+  margin: 0;
+  user-select: none;
+  overflow-wrap: break-word;
+
+  @media (--mediaMobile) {
+    font-size: clamp(2.4rem, 11vw, 3.5rem);
+  }
+}
+
+/* Main Grid: Left Column (Intro) + Right Column (Card) */
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  grid-gap: var(--space3XL);
+  align-items: start;
+
+  @media (--mediaLaptop) {
+    grid-gap: var(--space2XL);
+  }
+
+  @media (--mediaTablet) {
+    grid-template-columns: 100%;
+    grid-gap: var(--space2XL);
+  }
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+
+.description {
+  color: rgba(220, 220, 230, 0.8);
+  font-size: var(--fontSizeBodyL);
+  line-height: 1.65;
+  margin-bottom: var(--spaceXL);
+  max-width: 520px;
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition: opacity var(--durationM) ease 0.2s, transform var(--durationM) var(--bezierFastoutSlowin) 0.2s;
+
+  &[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 1C. Contact Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spaceM);
+  flex-wrap: wrap;
+  margin-bottom: var(--spaceM);
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition: opacity var(--durationM) ease 0.3s, transform var(--durationM) var(--bezierFastoutSlowin) 0.3s;
+
+  &[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (--mediaMobile) {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.primaryButton {
+  --primary: var(--accent);
+  --buttonTextColor: rgba(245, 245, 247, 0.95);
+  color: rgba(245, 245, 247, 0.95);
+  font-weight: var(--fontWeightMedium);
+  border-radius: 6px;
+  transition: opacity var(--durationS) ease, transform var(--durationS) ease;
+
+  &:hover {
+    --primary: color-mix(in lab, var(--accent) 85%, white);
+  }
+
+  @media (--mediaMobile) {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.secondaryButton {
+  --buttonTextColor: rgba(245, 245, 247, 0.95);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  color: rgba(245, 245, 247, 0.95);
+  font-weight: var(--fontWeightMedium);
+  transition: background var(--durationS) ease, border-color var(--durationS) ease, color var(--durationS) ease;
+
+  &::after {
+    display: none !important;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: rgb(255, 255, 255);
+  }
+
+  @media (--mediaMobile) {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fontSizeBodyS);
+  color: rgba(180, 180, 195, 0.75);
+  margin-top: var(--spaceS);
+  opacity: 0;
+  transition: opacity var(--durationM) ease 0.4s;
+
+  &[data-visible='true'] {
+    opacity: 0.85;
+  }
+}
+
+.noteDot {
+  color: rgba(240, 240, 245, 0.6);
+}
+
+/* 2. Glassmorphism Contact Card */
+.rightColumn {
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  transform: translate3d(20px, 0, 0);
+  transition: opacity var(--durationM) ease 0.2s, transform var(--durationM) var(--bezierFastoutSlowin) 0.2s;
+
+  &[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (--mediaTablet) {
+    justify-content: flex-start;
+    transform: translate3d(0, 20px, 0);
+  }
+}
+
+.card {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  padding: var(--space2XL);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+
+  /* Ambient soft radial lighting at the top inside edge of the card */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgba(255, 255, 255, 0.035) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  @supports not (backdrop-filter: blur(18px)) {
+    background: rgba(18, 18, 24, 0.95);
+  }
+
+  @media (--mediaMobile) {
+    padding: var(--spaceL);
+    border-radius: 18px;
+    max-width: 100%;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--spaceM);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  margin-bottom: var(--spaceM);
+}
+
+.cardLabel {
+  font-size: 11px;
+  font-weight: var(--fontWeightBold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(240, 240, 245, 0.85);
+}
+
+.responseTime {
+  font-size: 11px;
+  color: rgba(240, 240, 245, 0.9);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+}
+
+/* 3. Card Content & Dividers */
+.cardContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rowLabel {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(160, 160, 175, 0.7);
+  font-weight: var(--fontWeightMedium);
+}
+
+.rowValue {
+  font-size: var(--fontSizeBodyM);
+  color: rgba(245, 245, 247, 0.95);
+  font-weight: var(--fontWeightMedium);
+  line-height: 1.5;
+}
+
+.rowValueWithAction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spaceS);
+  flex-wrap: wrap;
+}
+
+.rowLink {
+  color: rgb(245, 245, 247);
+  text-decoration: none;
+  font-size: var(--fontSizeBodyM);
+  font-weight: var(--fontWeightMedium);
+  transition: color var(--durationS) ease, text-decoration-color var(--durationS) ease;
+  word-break: break-all;
+
+  &:hover {
+    color: #ffffff;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.4);
+    text-underline-offset: 4px;
+  }
+}
+
+.cardDivider {
+  height: 1px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.07);
+  margin: var(--spaceM) 0;
+}
+
+.copyButton {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(240, 240, 245, 0.9);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background var(--durationS) ease, border-color var(--durationS) ease, color var(--durationS) ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+  }
+}
+
+.copyText {
+  font-size: 12px;
+}
+
+.cardFooter {
+  padding-top: var(--spaceXS);
+}
+
+.statusIndicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--fontSizeBodyS);
+  color: rgba(220, 220, 230, 0.85);
+}
+
+.activeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: rgba(240, 240, 245, 0.9);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
+/* Reduced Motion Accessibility */
+@media (--mediaReduceMotion) {
+  .heroHeadingWrapper,
+  .description,
+  .actions,
+  .note,
+  .rightColumn {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
