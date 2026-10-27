@@ -1,8 +1,8 @@
 {
   "name": "aman-verma-portfolio",
-  "homepage": "https://amanverma.pages.dev",
+  "homepage": "https://amanverma-portfolio.pages.dev",
   "description": "Personal web development portfolio for Aman Verma",
-  "repository": "https://github.com/amanverma1807/portfolio.git",
+  "repository": "https://github.com/amanverma1807/my-portfolio-site.git",
   "author": "Aman Verma <amanverma.build@gmail.com>",
   "sideEffects": false,
   "type": "module",
@@ -11,7 +11,7 @@
     "dev": "node ./scripts/dev.cjs && remix vite:dev",
     "start": "wrangler pages dev ./build/client",
     "postinstall": "node ./scripts/draco.cjs",
-    "deploy": "npm run build && wrangler pages deploy ./build/client --project-name portfolio",
+    "deploy": "npm run build && wrangler pages deploy ./build/client --project-name amanverma-portfolio",
     "dev:storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build",
     "deploy:storybook": "wrangler pages deploy ./storybook-static --project-name portfolio-storybook --branch main"
