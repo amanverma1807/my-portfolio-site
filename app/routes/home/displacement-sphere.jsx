@@ -79,13 +79,11 @@ export const DisplacementSphere = props => {
       shader.fragmentShader = fragmentShader;
     };
 
-    startTransition(() => {
-      geometry.current = new SphereGeometry(32, 128, 128);
-      sphere.current = new Mesh(geometry.current, material.current);
-      sphere.current.position.z = 0;
-      sphere.current.modifier = Math.random();
-      scene.current.add(sphere.current);
-    });
+    geometry.current = new SphereGeometry(32, 128, 128);
+    sphere.current = new Mesh(geometry.current, material.current);
+    sphere.current.position.z = 0;
+    sphere.current.modifier = Math.random();
+    scene.current.add(sphere.current);
 
     return () => {
       cleanScene(scene.current);
@@ -102,7 +100,7 @@ export const DisplacementSphere = props => {
     dirLight.position.y = 100;
 
     lights.current = [dirLight, ambientLight];
-    lights.current.forEach(light => scene.current.add(light));
+    lights.current.forEach(light => scene.current?.add(light));
 
     return () => {
       removeLights(lights.current);
@@ -111,26 +109,29 @@ export const DisplacementSphere = props => {
 
   useEffect(() => {
     const { width, height } = windowSize;
+    if (!renderer.current || !camera.current) return;
 
     const adjustedHeight = height + height * 0.3;
     renderer.current.setSize(width, adjustedHeight);
     camera.current.aspect = width / adjustedHeight;
     camera.current.updateProjectionMatrix();
 
-    // Render a single frame on resize when not animating
-    if (reduceMotion) {
-      renderer.current.render(scene.current, camera.current);
+    if (sphere.current) {
+      if (width <= media.mobile) {
+        sphere.current.position.x = 14;
+        sphere.current.position.y = 10;
+      } else if (width <= media.tablet) {
+        sphere.current.position.x = 18;
+        sphere.current.position.y = 14;
+      } else {
+        sphere.current.position.x = 22;
+        sphere.current.position.y = 16;
+      }
     }
 
-    if (width <= media.mobile) {
-      sphere.current.position.x = 14;
-      sphere.current.position.y = 10;
-    } else if (width <= media.tablet) {
-      sphere.current.position.x = 18;
-      sphere.current.position.y = 14;
-    } else {
-      sphere.current.position.x = 22;
-      sphere.current.position.y = 16;
+    // Render a single frame on resize when not animating
+    if (reduceMotion && scene.current && camera.current) {
+      renderer.current.render(scene.current, camera.current);
     }
   }, [reduceMotion, windowSize]);
 
@@ -164,16 +165,20 @@ export const DisplacementSphere = props => {
         uniforms.current.time.value = 0.00005 * (Date.now() - start.current);
       }
 
-      sphere.current.rotation.z += 0.001;
-      sphere.current.rotation.x = rotationX.get();
-      sphere.current.rotation.y = rotationY.get();
+      if (sphere.current) {
+        sphere.current.rotation.z += 0.001;
+        sphere.current.rotation.x = rotationX.get();
+        sphere.current.rotation.y = rotationY.get();
+      }
 
-      renderer.current.render(scene.current, camera.current);
+      if (renderer.current && scene.current && camera.current) {
+        renderer.current.render(scene.current, camera.current);
+      }
     };
 
     if (!reduceMotion && isInViewport) {
       animate();
-    } else {
+    } else if (renderer.current && scene.current && camera.current) {
       renderer.current.render(scene.current, camera.current);
     }
 
