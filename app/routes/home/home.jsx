@@ -1,8 +1,3 @@
-import demoRealEstate from '~/assets/demo-real-estate.jpg';
-import demoClinic from '~/assets/demo-clinic-portal.jpg';
-import demo3DPrinting from '~/assets/demo-3d-printing.jpg';
-import demoSmileSalon from '~/assets/demo-smile-salon.jpg';
-import demoFreshNest from '~/assets/demo-freshnest-cleaning.jpg';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
@@ -120,15 +115,9 @@ export const Home = () => {
         description="A modern real estate showcase featuring premium residential and commercial developments, architectural galleries, property amenities, and direct consultation inquiries."
         buttonText="View Live Demo"
         buttonLink="https://real-estate-business.aff030832.workers.dev/"
-        model={{
-          type: 'laptop',
+        image={{
+          src: '/real-estate.png',
           alt: 'Aranya Developments real estate website demo preview',
-          textures: [
-            {
-              srcSet: `${demoRealEstate} 1280w, ${demoRealEstate} 2560w`,
-              placeholder: demoRealEstate,
-            },
-          ],
         }}
       />
 
@@ -145,8 +134,7 @@ export const Home = () => {
         buttonText="View Live Demo"
         buttonLink="https://dental-clinic-mu-bice.vercel.app/"
         image={{
-          srcSet: `${demoClinic} 1280w`,
-          placeholder: demoClinic,
+          src: '/clinic.png',
           alt: 'Sai Dental Clinic website demo preview',
         }}
       />
@@ -162,15 +150,9 @@ export const Home = () => {
         description="An on-demand additive manufacturing website offering precision 3D printed model catalogs, custom STL file uploads, material selection (PLA, ABS, PETG, Resin), and instant quotation workflows."
         buttonText="View Live Demo"
         buttonLink="https://3d-printing-demo-site.vercel.app/"
-        model={{
-          type: 'laptop',
+        image={{
+          src: '/3d-ecommerce.png',
           alt: 'Precision 3D Printing website demo preview',
-          textures: [
-            {
-              srcSet: `${demo3DPrinting} 1280w, ${demo3DPrinting} 2560w`,
-              placeholder: demo3DPrinting,
-            },
-          ],
         }}
       />
 
@@ -186,19 +168,9 @@ export const Home = () => {
         description="A luxury beauty and styling studio website showcasing signature hair services, bridal packages, skin aesthetic rituals, transparent service pricing, and appointment booking."
         buttonText="View Live Demo"
         buttonLink="https://smileluxurysaloon.aff030832.workers.dev/"
-        model={{
-          type: 'phone',
+        image={{
+          src: '/salon.png',
           alt: 'Smile Luxury Salon website demo preview',
-          textures: [
-            {
-              srcSet: `${demoSmileSalon} 375w, ${demoSmileSalon} 750w`,
-              placeholder: demoSmileSalon,
-            },
-            {
-              srcSet: `${demoSmileSalon} 375w, ${demoSmileSalon} 750w`,
-              placeholder: demoSmileSalon,
-            },
-          ],
         }}
       />
 
@@ -214,8 +186,7 @@ export const Home = () => {
         buttonText="View Live Demo"
         buttonLink="https://freshnest-cleaning-demo.aff030832.workers.dev/"
         image={{
-          srcSet: `${demoFreshNest} 1280w`,
-          placeholder: demoFreshNest,
+          src: '/cleaning-service.png',
           alt: 'FreshNest cleaning services website demo preview',
         }}
       />
