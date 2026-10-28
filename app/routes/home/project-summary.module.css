@@ -56,6 +56,17 @@
     grid-template-columns: 100%;
     gap: var(--space2XL);
     height: auto;
+    padding: 0 var(--space2XL);
+    box-sizing: border-box;
+  }
+
+  @media (--mediaMobile) {
+    padding: 0 var(--spaceXL);
+    gap: var(--spaceXL);
+  }
+
+  @media (--mediaMobileS) {
+    padding: 0 var(--spaceL);
   }
 }
 
@@ -65,12 +76,17 @@
 
   @media (--mediaTablet) {
     flex: 0 0 auto;
-    max-width: 500px;
+    max-width: 520px;
     grid-row: 2;
     grid-column: 1;
     justify-self: center;
     width: 100%;
     text-align: left;
+  }
+
+  @media (--mediaMobile) {
+    max-width: 100%;
+    padding: 0 var(--spaceXS);
   }
 }
 
