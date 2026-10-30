@@ -21,6 +21,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
   const { theme } = useTheme();
   const { disciplines } = config;
   const [disciplineIndex, setDisciplineIndex] = useState(0);
+  const [introIn, setIntroIn] = useState(false);
   const prevTheme = usePrevious(theme);
   const introLabel = [disciplines.slice(0, -1).join(', '), disciplines.slice(-1)[0]].join(
     ', and '
@@ -29,6 +30,10 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
   const titleId = `${id}-title`;
   const scrollToHash = useScrollToHash();
   const isHydrated = useHydrated();
+
+  useEffect(() => {
+    setIntroIn(true);
+  }, []);
 
   useInterval(
     () => {
@@ -60,7 +65,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
       tabIndex={-1}
       {...rest}
     >
-      <Transition in key={theme} timeout={3000}>
+      <Transition in={introIn} key={theme} timeout={3000}>
         {({ visible, status }) => (
           <>
             {isHydrated && (
