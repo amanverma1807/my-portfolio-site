@@ -2,7 +2,8 @@
   height: auto;
   min-height: 100vh;
   min-height: 100svh;
-  padding: var(--space4XL) 0;
+  padding-top: var(--space4XL);
+  padding-bottom: var(--space4XL);
   display: flex;
   align-items: center;
   justify-content: center;
