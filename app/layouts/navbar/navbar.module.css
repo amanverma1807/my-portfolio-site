@@ -232,4 +232,10 @@
       transform: none;
     }
   }
+
+  .desktopThemeToggle {
+    @media (--mediaMobile), (max-height: 696px) {
+      display: none;
+    }
+  }
 }

@@ -199,7 +199,7 @@ export const Navbar = () => {
           </nav>
         )}
       </Transition>
-      {!isMobile && <ThemeToggle data-navbar-item />}
+      <ThemeToggle className={styles.desktopThemeToggle} data-navbar-item />
     </header>
   );
 };
