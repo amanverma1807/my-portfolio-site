@@ -2,6 +2,8 @@ import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
 import { Profile } from './profile';
+import { Services } from './services';
+import { TechStack } from './tech-stack';
 import { ProjectSummary } from './project-summary';
 import { ContactSection } from './contact-section';
 import { useEffect, useRef, useState } from 'react';
@@ -39,23 +41,27 @@ export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
   const intro = useRef();
+  const details = useRef();
+  const services = useRef();
+  const techStack = useRef();
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
   const projectFour = useRef();
   const projectFive = useRef();
-  const details = useRef();
   const contact = useRef();
 
   useEffect(() => {
     const sections = [
       intro,
+      details,
+      services,
+      techStack,
       projectOne,
       projectTwo,
       projectThree,
       projectFour,
       projectFive,
-      details,
       contact,
     ];
 
@@ -104,7 +110,28 @@ export const Home = () => {
         scrollIndicatorHidden={scrollIndicatorHidden}
       />
 
-      {/* Project 1: Real Estate Website */}
+      {/* 2. About Me Section */}
+      <Profile
+        id="details"
+        sectionRef={details}
+        visible={visibleSections.includes(details.current)}
+      />
+
+      {/* 3. What I Can Do — Interactive Services */}
+      <Services
+        id="services"
+        sectionRef={services}
+        visible={visibleSections.includes(services.current)}
+      />
+
+      {/* 4. Tech Stack — Verified Tools */}
+      <TechStack
+        id="stack"
+        sectionRef={techStack}
+        visible={visibleSections.includes(techStack.current)}
+      />
+
+      {/* 5. Selected Projects */}
       <ProjectSummary
         id="project-1"
         sectionRef={projectOne}
@@ -191,12 +218,7 @@ export const Home = () => {
         }}
       />
 
-      {/* Profile / Details Section */}
-      <Profile
-        sectionRef={details}
-        visible={visibleSections.includes(details.current)}
-        id="details"
-      />
+
 
       {/* Final Contact Section before Footer */}
       <ContactSection
