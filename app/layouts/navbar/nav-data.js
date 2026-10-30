@@ -18,10 +18,6 @@ export const navLinks = [
     pathname: '/#stack',
   },
   {
-    label: 'Articles',
-    pathname: '/articles',
-  },
-  {
     label: 'Contact',
     pathname: '/contact',
   },
