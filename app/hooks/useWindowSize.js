@@ -41,10 +41,10 @@ export function useWindowSize() {
     };
   }, [getHeight]);
 
-  const [windowSize, setWindowSize] = useState(() => ({
-    width: typeof window !== 'undefined' ? window.innerWidth : 1280,
-    height: typeof window !== 'undefined' ? window.innerHeight : 800,
-  }));
+  const [windowSize, setWindowSize] = useState({
+    width: 1280,
+    height: 800,
+  });
 
   useEffect(() => {
     const handleResize = () => {
